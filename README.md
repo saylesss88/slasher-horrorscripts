@@ -1,10 +1,12 @@
 # Slasher Horrorscripts 🔪
 
+`.png` image credit https://pngegg.com
+
 A Rust-based CLI tool that displays high-quality ANSI art of horror movie icons
 in your terminal. Inspired by `pokemon-colorscripts`, but built for fans of the
 macabre.
 
-Photo credit https://pngegg.com
+![screenshot1](https://raw.githubusercontent.com/saylesss88/mdbook-kanagawa-theme/main/assets/demo1.png)
 
 ## ✨ Features
 
