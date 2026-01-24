@@ -4,8 +4,7 @@ A Rust-based CLI tool that displays high-quality ANSI art of horror movie icons
 in your terminal. Inspired by `pokemon-colorscripts`, but built for fans of the
 macabre.
 
-This is a WIP, I will probably add better sprites and make changes. I cannot
-find where I got these ones from to give credit...
+Photo credit https://pngegg.com
 
 ## ✨ Features
 
@@ -48,6 +47,8 @@ text files.
 
 ```bash
 cargo run --bin convert
+# Or once installed simply
+convert
 ```
 
 3. Build & Install
@@ -93,7 +94,7 @@ Want to add Pinhead, or any other character?
 
 - Tip: 8-bit or 16-bit sprites with transparent backgrounds work best.
 
-2. Save the image to `assets/images/` (e.g., `pinhead.png`).
+2. Save the image to `assets/images/` (e.g., `swampthing.png`).
 
 3. Run the converter:
 
