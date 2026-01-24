@@ -1,6 +1,6 @@
 [package]
 name = "slasher-horrorscripts"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2024"
 default-run = "slasher-horrorscripts"
 authors = ["T.Sawyer <saylesss87@proton.me"]
