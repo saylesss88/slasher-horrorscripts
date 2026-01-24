@@ -8,6 +8,8 @@ macabre.
 
 ![screenshot1](https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/demo1.png)
 
+![screenshot1](https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/demo2.png)
+
 ## ✨ Features
 
 - **Blazing Fast**: Written in pure Rust with embedded assets (single binary, no

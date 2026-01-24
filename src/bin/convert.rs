@@ -23,7 +23,7 @@ fn main() -> Result<()> {
         // Only process PNG/JPG
         if path
             .extension()
-            .map_or(false, |ext| ext == "png" || ext == "jpg")
+            .is_some_and(|ext| ext == "png" || ext == "jpg")
         {
             let stem = path.file_stem().unwrap().to_string_lossy();
             println!("Processing {}...", stem);

@@ -1,5 +1,5 @@
 use clap::Parser;
-use rand::seq::SliceRandom;
+use rand::prelude::IndexedRandom;
 use rust_embed::RustEmbed;
 
 #[derive(RustEmbed)]
@@ -42,7 +42,7 @@ fn main() {
         format!("{}.txt", n.to_lowercase())
     } else {
         // Pick random
-        let mut rng = rand::thread_rng();
+        let mut rng = rand::rng();
         files.choose(&mut rng).unwrap().to_string()
     };
 
