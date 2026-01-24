@@ -6,7 +6,7 @@ A Rust-based CLI tool that displays high-quality ANSI art of horror movie icons
 in your terminal. Inspired by `pokemon-colorscripts`, but built for fans of the
 macabre.
 
-![screenshot1](https://raw.githubusercontent.com/saylesss88/mdbook-kanagawa-theme/main/assets/demo1.png)
+![screenshot1](https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/demo1.png)
 
 ## ✨ Features
 
