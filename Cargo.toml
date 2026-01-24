@@ -2,9 +2,20 @@
 name = "slasher-horrorscripts"
 version = "0.1.0"
 edition = "2024"
+default-run = "slasher-horrorscripts"
+authors = ["T.Sawyer <saylesss87@proton.me"]
+repository = "https://github.com/saylesss88/slasher-horrorscripts"
+description = "A Rust-based CLI tool that displays high-quality ANSI art of horror movie icons in your terminal"
+readme = "README.md"
+keywords = ["rust", "terminal"]
+homepage = "https://github.com/saylesss88/slasher-horrorscripts"
+
+license = 'MIT'
+exclude = ["result", "docs", ".github", ".gitignore"]
+
 
 [dependencies]
-px2ansi-rs = "0.1"
+px2ansi-rs = "0.1.1"
 clap = {version = "4.4", features = ["derive"]}
 rand = "0.8"
 rust-embed = "8.0"

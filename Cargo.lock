@@ -807,9 +807,9 @@ dependencies = [
 
 [[package]]
 name = "px2ansi-rs"
-version = "0.1.0"
+version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "12aabc36b7b358330c4ca8d561437bdad698f1473127a0a03e1ff0e9e834fc3e"
+checksum = "f65f3652d00a0edebfe3312558a0c50225bbd10d627709334c834c2235c4d3d4"
 dependencies = [
  "anyhow",
  "clap",
