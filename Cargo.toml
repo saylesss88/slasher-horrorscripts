@@ -11,7 +11,7 @@ keywords = ["rust", "terminal"]
 homepage = "https://github.com/saylesss88/slasher-horrorscripts"
 
 license = 'MIT'
-exclude = ["result", "docs", ".github", ".gitignore"]
+exclude = ["result", "docs", ".github", ".gitignore", "assets/demo1.png"]
 
 
 [dependencies]
