@@ -73,9 +73,6 @@ slasher-horrorscripts --name jason
 
 # List all available characters
 slasher-horrorscripts --list
-
-# Show random character without the name label
-slasher-horrorscripts --random --no-title
 ```
 
 ## Add to Shell Startup
@@ -85,7 +82,7 @@ your shell config (.bashrc, .zshrc, or config.fish):
 
 ```bash
 # Display a random slasher on startup
-slasher-horrorscripts --random
+slasher-horrorscripts
 ```
 
 ## 🎨 Adding New Characters
@@ -115,7 +112,8 @@ cargo build --release
 This project uses a custom rendering engine, px2ansi-rs, to handle image
 processing.
 
-- **Engine**: px2ansi-rs handles the RGB-to-ANSI escape sequence conversion.
+- **Engine**: [px2ansi-rs](https://crates.io/crates/px2ansi-rs) handles the
+  RGB-to-ANSI escape sequence conversion.
 
 - **Resizing**: Images are automatically resized to a terminal-friendly height
   (40 rows) during the conversion step to ensure consistent presentation.
