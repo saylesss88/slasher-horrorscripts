@@ -1,5 +1,9 @@
 # Slasher Horrorscripts 🔪
 
+[![Nix Flake](https://img.shields.io/badge/Nix_Flake-Geared-dddd00?logo=nixos&logoColor=white)](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake.html)
+
+[![Nix](https://img.shields.io/badge/Nix-5277C3?style=flat&logo=nixos&logoColor=white)](https://nixos.org)
+
 `.png` image credit https://pngegg.com
 
 A Rust-based CLI tool that displays high-quality ANSI art of horror movie icons
@@ -40,8 +44,31 @@ Choose this if you want to add your own characters or modify the art.
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/slasher-horrorscripts.git
+git clone https://github.com/saylesss88/slasher-horrorscripts.git
 cd slasher-horrorscripts
+cargo install --path .
+```
+
+Option 3: Nix
+
+```bash
+nix run github:saylesss88/slasher-horrorscripts
+# If that doesn't work try:
+nix run --no-write-lock-file github:saylesss88/slasher-horrorscripts
+```
+
+Flake input:
+
+```nix
+slasher-horrorscripts.url = "github:saylesss88/slasher-horrorscripts";
+```
+
+`environment.systemPackages`:
+
+```nix
+{ inputs, pkgs, ... }: {
+inputs.slasher-horrorscripts.packages.${pkgs.stdenv.hostPlatform.system}.default
+}
 ```
 
 2. Generate Assets:
