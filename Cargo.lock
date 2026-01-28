@@ -824,6 +824,8 @@ dependencies = [
 [[package]]
 name = "px2ansi-rs"
 version = "0.2.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bc33c5dedbc3944a4029501b68a9ee758f0b8eba3c3f1628d7edbe19eaa253dd"
 dependencies = [
  "anyhow",
  "clap",
@@ -1101,7 +1103,7 @@ dependencies = [
 
 [[package]]
 name = "slasher-horrorscripts"
-version = "0.1.5"
+version = "0.2.5"
 dependencies = [
  "anyhow",
  "clap",
