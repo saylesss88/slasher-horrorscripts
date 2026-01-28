@@ -1,10 +1,12 @@
 // src/bin/convert.rs
 use anyhow::Result;
 use image::imageops::FilterType;
-// use image::GenericImageView;
 use std::fs;
-use std::io::Write;
+use std::io::BufWriter; // Import BufWriter for speed
 use std::path::Path;
+
+// CHANGE 1: Use the new function name from your updated crate
+use px2ansi_rs::write_ansi_art;
 
 fn main() -> Result<()> {
     let img_dir = Path::new("assets/images");
@@ -23,12 +25,14 @@ fn main() -> Result<()> {
         // Only process PNG/JPG
         if path
             .extension()
-            .is_some_and(|ext| ext == "png" || ext == "jpg")
+            .map(|ext| ext == "png" || ext == "jpg")
+            .unwrap_or(false) // Safe unwrapping for extension check
         {
             let stem = path.file_stem().unwrap().to_string_lossy();
             println!("Processing {}...", stem);
 
             // 1. Open the image
+            // Note: Since these are assets, we assume they fit in memory.
             let img = image::open(&path)?;
 
             // 2. Resize for consistency
@@ -36,13 +40,17 @@ fn main() -> Result<()> {
             // FilterType::Nearest preserves the "pixel art" look best.
             let resized = img.resize(u32::MAX, 40, FilterType::Nearest);
 
-            // 3. Convert using your crate
-            let ansi_art = px2ansi_rs::image_to_ansi(&resized);
-
-            // 4. Save to text file
+            // 3. Save to text file
             let out_path = txt_dir.join(format!("{}.txt", stem));
-            let mut file = fs::File::create(out_path)?;
-            file.write_all(ansi_art.as_bytes())?;
+            let file = fs::File::create(out_path)?;
+            
+            // CHANGE 2: Wrap file in BufWriter
+            // Writing small ANSI codes directly to disk byte-by-byte is slow.
+            let mut writer = BufWriter::new(file);
+
+            // CHANGE 3: Use the new streaming API
+            // Instead of allocating a huge String in memory, we write directly to the file.
+            write_ansi_art(&resized, &mut writer)?;
         }
     }
     println!("All gory assets converted successfully.");

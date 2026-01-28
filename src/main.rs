@@ -1,5 +1,5 @@
 use clap::Parser;
-use rand::prelude::IndexedRandom;
+use rand::seq::SliceRandom;
 use rust_embed::RustEmbed;
 
 #[derive(RustEmbed)]
@@ -23,6 +23,8 @@ struct Cli {
 
 fn main() {
     let cli = Cli::parse();
+    // Note: If you are using Windows, paths might need consistent handling,
+    // but usually rust-embed handles forward slashes fine.
     let files: Vec<String> = Assets::iter().map(|f| f.to_string()).collect();
 
     if files.is_empty() {
@@ -42,7 +44,8 @@ fn main() {
         format!("{}.txt", n.to_lowercase())
     } else {
         // Pick random
-        let mut rng = rand::rng();
+        // CHANGE 2: Use thread_rng() instead of rng()
+        let mut rng = rand::thread_rng();
         files.choose(&mut rng).unwrap().to_string()
     };
 

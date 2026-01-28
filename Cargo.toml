@@ -22,9 +22,9 @@ exclude = [
 
 
 [dependencies]
-px2ansi-rs = "0.1.1"
+px2ansi-rs = "0.2.2"
 clap = {version = "4.4", features = ["derive"]}
-rand = "0.9.2"
+rand = "0.8.5"
 rust-embed = "8.0"
 anyhow = "1.0"
 image = "0.25"
