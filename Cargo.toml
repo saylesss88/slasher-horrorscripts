@@ -9,6 +9,7 @@ description = "A Rust-based CLI tool that displays high-quality ANSI art of horr
 readme = "README.md"
 keywords = ["rust", "terminal"]
 homepage = "https://github.com/saylesss88/slasher-horrorscripts"
+categories = ["command-line-utilities"]
 
 license = 'MIT'
 exclude = [
@@ -22,7 +23,7 @@ exclude = [
 
 
 [dependencies]
-px2ansi-rs = "0.2.2"
+px2ansi-rs = "0.2.5"
 clap = {version = "4.4", features = ["derive"]}
 rand = "0.8.5"
 rust-embed = "8.0"
