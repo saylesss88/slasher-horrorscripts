@@ -25,11 +25,10 @@ fn main() -> Result<()> {
         // Only process PNG/JPG
         if path
             .extension()
-            .map(|ext| ext == "png" || ext == "jpg")
-            .unwrap_or(false) // Safe unwrapping for extension check
+            .is_some_and(|ext| ext == "png" || ext == "jpg")
         {
             let stem = path.file_stem().unwrap().to_string_lossy();
-            println!("Processing {}...", stem);
+            println!("Processing {stem}...");
 
             // 1. Open the image
             // Note: Since these are assets, we assume they fit in memory.
@@ -41,9 +40,9 @@ fn main() -> Result<()> {
             let resized = img.resize(u32::MAX, 40, FilterType::Nearest);
 
             // 3. Save to text file
-            let out_path = txt_dir.join(format!("{}.txt", stem));
+            let out_path = txt_dir.join(format!("{stem}.txt"));
             let file = fs::File::create(out_path)?;
-            
+
             // CHANGE 2: Wrap file in BufWriter
             // Writing small ANSI codes directly to disk byte-by-byte is slow.
             let mut writer = BufWriter::new(file);

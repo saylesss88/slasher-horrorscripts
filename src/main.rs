@@ -1,5 +1,6 @@
+#![allow(clippy::multiple_crate_versions)]
 use clap::Parser;
-use rand::seq::SliceRandom;
+use rand::seq::IndexedRandom;
 use rust_embed::RustEmbed;
 
 #[derive(RustEmbed)]
@@ -7,6 +8,11 @@ use rust_embed::RustEmbed;
 struct Assets;
 
 #[derive(Parser)]
+#[command(
+    name = "slasher-horrorscripts",
+    version,
+    about = "Horror-Themed Alternative to pokemon-colorscripts"
+)]
 struct Cli {
     /// Character name (e.g. "jason", "freddy")
     #[arg(short, long)]
@@ -40,18 +46,29 @@ fn main() {
         return;
     }
 
-    let target = if let Some(n) = cli.name {
-        format!("{}.txt", n.to_lowercase())
-    } else {
-        // Pick random
-        // CHANGE 2: Use thread_rng() instead of rng()
-        let mut rng = rand::thread_rng();
-        files.choose(&mut rng).unwrap().to_string()
-    };
+    let target = cli.name.map_or_else(
+        || {
+            let mut rng = rand::rng();
+            files.choose(&mut rng).unwrap().clone()
+        },
+        |n| {
+            let lower = n.to_lowercase();
+            format!("{lower}.txt")
+        },
+    );
+
+    // let target = if let Some(n) = cli.name {
+    //     format!("{}.txt", n.to_lowercase())
+    // } else {
+    //     // Pick random
+    //     // CHANGE 2: Use thread_rng() instead of rng()
+    //     let mut rng = rand::thread_rng();
+    //     files.choose(&mut rng).unwrap().to_string()
+    // };
 
     if let Some(file) = Assets::get(&target) {
         let art = std::str::from_utf8(file.data.as_ref()).unwrap();
-        println!("{}", art);
+        println!("{art}");
     } else {
         eprintln!("Slasher '{}' not found.", target.trim_end_matches(".txt"));
     }
