@@ -1,3 +1,4 @@
+#![allow(clippy::multiple_crate_versions)]
 use clap::Parser;
 use rand::prelude::IndexedRandom;
 use rust_embed::RustEmbed;
@@ -10,6 +11,7 @@ struct Assets;
 #[derive(Parser)]
 #[command(name = "slasher")]
 #[command(about = "Horror-themed script manager", long_about = None)]
+#[allow(clippy::struct_excessive_bools)]
 struct Cli {
     /// Character name (e.g. "jason", "freddy")
     #[arg(short, long)]
@@ -25,6 +27,9 @@ struct Cli {
 
     #[arg(long)]
     fetch: bool,
+
+    #[arg(long)]
+    fetch_only: bool,
 }
 
 fn main() {
@@ -43,7 +48,7 @@ fn main() {
         }
         return;
     }
-    if cli.fetch {
+    if cli.fetch_only {
         fetch::print_fetch(13);
         return;
     }
@@ -59,7 +64,12 @@ fn main() {
 
     if let Some(file) = Assets::get(&target) {
         let art = std::str::from_utf8(file.data.as_ref()).unwrap();
-        println!("{art}");
+
+        if cli.fetch {
+            fetch::print_with_left_block(art, 13);
+        } else {
+            println!("{art}");
+        }
     } else {
         eprintln!("Slasher '{}' not found.", target.trim_end_matches(".txt"));
     }
