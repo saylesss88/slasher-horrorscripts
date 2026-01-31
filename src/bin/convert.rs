@@ -37,7 +37,13 @@ fn main() -> Result<()> {
             // 2. Resize for consistency
             // Height 40 is a good "terminal tall" size. Width is auto-calculated.
             // FilterType::Nearest preserves the "pixel art" look best.
-            let resized = img.resize(u32::MAX, 40, FilterType::Nearest);
+            let target_height = 40;
+            let resized = if img.height() > target_height {
+                img.resize(u32::MAX, target_height, FilterType::Nearest)
+            } else {
+                // Keep original size to prevent "fat pixel" distortion
+                img
+            };
 
             // 3. Save to text file
             let out_path = txt_dir.join(format!("{stem}.txt"));
