@@ -102,6 +102,12 @@ slasher-horrorscripts --name jason
 
 # List all available characters
 slasher-horrorscripts --list
+
+# List a random slasher with a fetch of system info
+slasher-horrorscripts --fetch
+
+# Fetch only with a simple box next to it (WIP)
+slasher-horrorscripts --fetch-only
 ```
 
 ## Add to Shell Startup
@@ -112,7 +118,11 @@ your shell config (.bashrc, .zshrc, or config.fish):
 ```bash
 # Display a random slasher on startup
 slasher-horrorscripts
+# Random slasher w/ fetch
+slasher-horrorscripts --fetch
 ```
+
+---
 
 ## 🎨 Adding New Characters
 
@@ -136,6 +146,8 @@ cargo run --bin convert
 cargo build --release
 ```
 
+---
+
 ## 🔧 Technical Details
 
 This project uses a custom rendering engine, px2ansi-rs, to handle image
@@ -150,6 +162,9 @@ processing.
 - **Embedding**: The rust-embed crate compiles the generated ANSI text files
   directly into the final binary, making it portable and easy to distribute.
 
+---
+
 ## 📜 License
 
-MIT License - Hack away!
+[MIT](https://github.com/saylesss88/slasher-horrorscripts/blob/main/LICENSE)
+License - Hack away!
