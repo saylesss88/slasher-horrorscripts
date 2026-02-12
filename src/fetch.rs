@@ -9,7 +9,7 @@ fn username() -> String {
 
 fn hostname() -> String {
     System::host_name().unwrap_or_else(|| "slasher".to_string())
-} // sysinfo exposes System::host_name() [web:65]
+} // sysinfo exposes System::host_name()
 
 #[must_use]
 pub fn fetch_lines(script_count: usize) -> Vec<String> {

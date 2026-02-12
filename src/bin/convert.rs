@@ -2,10 +2,9 @@
 use anyhow::Result;
 use image::imageops::FilterType;
 use std::fs;
-use std::io::BufWriter; // Import BufWriter for speed
+use std::io::BufWriter;
 use std::path::Path;
 
-// CHANGE 1: Use the new function name from your updated crate
 use px2ansi_rs::write_ansi_art;
 
 fn main() -> Result<()> {
@@ -49,11 +48,11 @@ fn main() -> Result<()> {
             let out_path = txt_dir.join(format!("{stem}.txt"));
             let file = fs::File::create(out_path)?;
 
-            // CHANGE 2: Wrap file in BufWriter
+            // Wrap file in BufWriter
             // Writing small ANSI codes directly to disk byte-by-byte is slow.
             let mut writer = BufWriter::new(file);
 
-            // CHANGE 3: Use the new streaming API
+            // Use the new streaming API
             // Instead of allocating a huge String in memory, we write directly to the file.
             write_ansi_art(&resized, &mut writer)?;
         }
