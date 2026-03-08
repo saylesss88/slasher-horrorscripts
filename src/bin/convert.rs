@@ -1,11 +1,11 @@
-// src/bin/convert.rs
 use anyhow::Result;
 use image::imageops::FilterType;
 use std::fs;
 use std::io::BufWriter;
 use std::path::Path;
 
-use px2ansi_rs::write_ansi_art;
+// Import OutputMode along with the function
+use px2ansi_rs::{OutputMode, write_ansi_art};
 
 fn main() -> Result<()> {
     let img_dir = Path::new("assets/images");
@@ -21,42 +21,33 @@ fn main() -> Result<()> {
         let entry = entry?;
         let path = entry.path();
 
-        // Only process PNG/JPG
         if path
             .extension()
-            .is_some_and(|ext| ext == "png" || ext == "jpg")
+            .is_some_and(|ext| ext == "png" || ext == "jpg" || ext == "jpeg")
         {
             let stem = path.file_stem().unwrap().to_string_lossy();
             println!("Processing {stem}...");
 
-            // 1. Open the image
-            // Note: Since these are assets, we assume they fit in memory.
             let img = image::open(&path)?;
 
-            // 2. Resize for consistency
-            // Height 40 is a good "terminal tall" size. Width is auto-calculated.
-            // FilterType::Nearest preserves the "pixel art" look best.
+            // Logic for resizing
             let target_height = 40;
             let resized = if img.height() > target_height {
+                // For ANSI mode, height is pixels, but terminal characters are 2-px tall.
+                // So target_height 40 here actually results in 20 lines of text.
                 img.resize(u32::MAX, target_height, FilterType::Nearest)
             } else {
-                // Keep original size to prevent "fat pixel" distortion
                 img
             };
 
-            // 3. Save to text file
             let out_path = txt_dir.join(format!("{stem}.txt"));
             let file = fs::File::create(out_path)?;
-
-            // Wrap file in BufWriter
-            // Writing small ANSI codes directly to disk byte-by-byte is slow.
             let mut writer = BufWriter::new(file);
 
-            // Use the new streaming API
-            // Instead of allocating a huge String in memory, we write directly to the file.
-            write_ansi_art(&resized, &mut writer)?;
+            // Use Ansi (half-blocks) for better resolution.
+            write_ansi_art(&resized, &mut writer, OutputMode::Ansi)?;
         }
     }
-    println!("All gory assets converted successfully.");
+    println!("All assets converted successfully.");
     Ok(())
 }
