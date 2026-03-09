@@ -10,8 +10,7 @@ A Rust-based CLI tool that displays high-quality ANSI art of horror movie icons
 in your terminal. Inspired by `pokemon-colorscripts`, but built for fans of the
 macabre.
 
-(Foot terminal with custom Kanagawa theme shown)
-![screenshot1](https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/demo1.png)
+![screenshot1](https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/saw.cleaned.png)
 
 ![screenshot1](https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/demo2.png)
 
