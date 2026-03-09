@@ -13,7 +13,7 @@ struct Assets;
 #[command(about = "Horror-themed script manager", long_about = None)]
 #[allow(clippy::struct_excessive_bools)]
 struct Cli {
-    /// Character name (e.g. "jason", "freddy")
+    /// Character name (e.g. "jason", "freddy"). If omitted, a random slasher is chosen.
     #[arg(short, long)]
     name: Option<String>,
 
@@ -49,7 +49,7 @@ fn main() {
         return;
     }
     if cli.fetch_only {
-        fetch::print_fetch(13);
+        fetch::print_fetch();
         return;
     }
 
@@ -66,7 +66,7 @@ fn main() {
         let art = std::str::from_utf8(file.data.as_ref()).unwrap();
 
         if cli.fetch {
-            fetch::print_with_left_block(art, 13);
+            fetch::print_with_left_block(art);
         } else {
             println!("{art}");
         }
