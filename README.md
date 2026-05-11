@@ -10,22 +10,25 @@ A Rust-based CLI tool that displays high-quality ANSI art of horror movie icons
 in your terminal. Inspired by `pokemon-colorscripts`, but built for fans of the
 macabre.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/output-slasher.gif" width="600" alt="slasher-horrorscripts demo">
+</p>
+
 ![screenshot1](https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/saw.cleaned.png)
 
 ![screenshot1](https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/demo2.png)
 
 ## ✨ Features
 
-- **Blazing Fast**: Written in pure Rust with embedded assets (single binary, no
-  runtime dependencies).
-
-- **High Fidelity**: Uses a custom image-to-ANSI engine (px2ansi-rs) for crisp
-  pixel-perfect rendering.
-
-- **Self-Contained**: No external image files needed at runtime; everything is
-  baked into the executable.
-
+- **Multiple render styles**: ANSI half-blocks, Braille, ASCII, Unicode,
+  Fade, FullBlock, and Sixel (pixel-accurate inline images).
+- **Blazing Fast**: Written in pure Rust with embedded assets — single binary,
+  no runtime dependencies.
+- **System fetch**: Display system info alongside your slasher with `--fetch`.
+- **Sixel support**: Pixel-perfect inline images in compatible terminals
+  (WezTerm, ghostty, foot).
 - **Randomizer**: Get a different slasher every time you open your terminal.
+- **Self-Contained**: Images are baked into the executable at build time.
 
 ## 📦 Installation
 
@@ -94,20 +97,33 @@ cp target/release/slasher-horrorscripts ~/.local/bin/
 Run the tool directly from your terminal:
 
 ```bash
-# Show a random slasher
-slasher-horrorscripts
+# Show a random slasher (default ANSI style)
+slasher
 
 # Show a specific character
-slasher-horrorscripts --name jason
+slasher --name jason
 
 # List all available characters
-slasher-horrorscripts --list
+slasher --list
 
-# List a random slasher with a fetch of system info
-slasher-horrorscripts --fetch
+# Choose a render style
+slasher --style braille
+slasher --style ascii
+slasher --style fade
+slasher --style unicode
+slasher --style fullblock
+slasher --style sixel        # requires a Sixel-compatible terminal
 
-# Fetch only with a simple box next to it (WIP)
-slasher-horrorscripts --fetch-only
+# Show system info alongside the image
+slasher --fetch
+slasher --fetch --style braille
+slasher --fetch --style sixel
+
+# Show system info with ASCII logo only (no image)
+slasher --fetch-only
+
+# Combine name + style
+slasher --name jason --style sixel
 ```
 
 ## Add to Shell Startup
