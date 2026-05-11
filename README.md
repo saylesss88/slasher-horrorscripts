@@ -20,10 +20,10 @@ macabre.
 
 ## ✨ Features
 
-- **Multiple render styles**: ANSI half-blocks, Braille, ASCII, Unicode,
-  Fade, FullBlock, and Sixel (pixel-accurate inline images).
-- **Blazing Fast**: Written in pure Rust with embedded assets — single binary,
-  no runtime dependencies.
+- **Multiple render styles**: ANSI half-blocks, Braille, ASCII, Unicode, Fade,
+  FullBlock, and Sixel (pixel-accurate inline images).
+- **Blazing Fast**: Written in pure Rust with embedded assets. Single binary, no
+  runtime dependencies.
 - **System fetch**: Display system info alongside your slasher with `--fetch`.
 - **Sixel support**: Pixel-perfect inline images in compatible terminals
   (WezTerm, ghostty, foot).
@@ -74,18 +74,7 @@ inputs.slasher-horrorscripts.packages.${pkgs.stdenv.hostPlatform.system}.default
 }
 ```
 
-2. Generate Assets:
-
-This step converts the raw PNG sprites in `assets/images` into optimized ANSI
-text files.
-
-```bash
-cargo run --bin convert
-# Or once installed simply
-convert
-```
-
-3. Build & Install
+2. Build & Install
 
 ```bash
 cargo build --release
@@ -94,7 +83,8 @@ cp target/release/slasher-horrorscripts ~/.local/bin/
 
 ## Usage
 
-Run the tool directly from your terminal:
+Run the tool directly from your terminal, both `slasher-horrorscripts` &
+`slasher` work:
 
 ```bash
 # Show a random slasher (default ANSI style)
@@ -105,6 +95,18 @@ slasher --name jason
 
 # List all available characters
 slasher --list
+Available Slashers:
+  - chucky
+  - freddy
+  - it
+  - jason
+  - jigsaw
+  - leatherface
+  - mike-myers
+  - pinhead
+  - psycho-head
+  - scarryrabbit
+  - scream
 
 # Choose a render style
 slasher --style braille
@@ -136,49 +138,44 @@ your shell config (`.bashrc`, `.zshrc`, or `config.fish`):
 slasher-horrorscripts
 # Random slasher w/ fetch
 slasher-horrorscripts --fetch
+slasher-horrorscripts --fetch --style sixel
 ```
 
 ---
 
+
 ## 🎨 Adding New Characters
 
-Want to add Pinhead, or any other character?
+Want to add Swamp Thing, or any other character?
 
 1. Find a pixel art sprite (PNG/JPG).
-
-- Tip: 8-bit or 16-bit sprites with transparent backgrounds work best.
-
-2. Save the image to `assets/images/` (e.g., `swampthing.png`).
-
-3. Run the converter:
-
-```bash
-cargo run --bin convert
-```
-
-4. Rebuild the binary:
-
+   - Tip: 8-bit or 16-bit sprites with transparent backgrounds work best.
+2. Save the image to `assets/embed/images/` (e.g., `swamp-thing.png`).
+3. Rebuild the binary:
 ```bash
 cargo build --release
 ```
+
+That's it, the image is embedded at compile time and available immediately.
 
 ---
 
 ## 🔧 Technical Details
 
-This project uses a custom rendering engine, px2ansi-rs, to handle image
-processing.
+Rendering is powered by the [px2ansi](https://crates.io/crates/px2ansi) library.
 
-- **Engine**: [px2ansi-rs](https://crates.io/crates/px2ansi-rs) handles the
-  RGB-to-ANSI escape sequence conversion.
+- **Engine**: [px2ansi](https://crates.io/crates/px2ansi) handles RGB-to-ANSI
+  escape sequence conversion, supporting multiple styles including half-blocks,
+  Braille, ASCII, and Sixel.
+- **Resizing**: Images are resized at runtime to fit your terminal, with
+  per-style dimension logic (e.g. Braille uses 2×4 dot patterns, Sixel renders
+  pixel-accurate).
+- **Embedding**: The [rust-embed](https://crates.io/crates/rust-embed) crate
+  compiles the PNG sprites in `assets/embed/images/` directly into the binary
+  at build time, producing a single portable executable with no runtime
+  dependencies.
 
-- **Resizing**: Images are automatically resized to a terminal-friendly height
-  (40 rows) during the conversion step to ensure consistent presentation.
-
-- **Embedding**: The rust-embed crate compiles the generated ANSI text files
-  directly into the final binary, making it portable and easy to distribute.
-
----
+  ---
 
 ## 📜 License
 
