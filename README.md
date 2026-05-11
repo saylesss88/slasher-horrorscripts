@@ -129,7 +129,7 @@ slasher --name jason --style sixel
 ## Add to Shell Startup
 
 To see a random horror icon every time you launch your terminal, add this to
-your shell config (.bashrc, .zshrc, or config.fish):
+your shell config (`.bashrc`, `.zshrc`, or `config.fish`):
 
 ```bash
 # Display a random slasher on startup
