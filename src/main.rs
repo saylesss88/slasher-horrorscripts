@@ -8,7 +8,7 @@ use rust_embed::RustEmbed;
 pub mod fetch;
 
 #[derive(RustEmbed)]
-#[folder = "embed/images/"]
+#[folder = "assets/embed/images/"]
 struct Assets;
 
 #[derive(Parser)]
