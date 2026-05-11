@@ -7,6 +7,7 @@ fn username() -> String {
     std::env::var("USER").unwrap_or_else(|_| "victim".to_string())
 }
 
+#[must_use]
 pub fn linux_locale() -> String {
     env::var("LC_ALL")
         .or_else(|_| env::var("LANG"))
