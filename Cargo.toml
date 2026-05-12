@@ -2,7 +2,7 @@
 name = "slasher-horrorscripts"
 version = "0.3.1"
 edition = "2024"
-default-run = "slasher-horrorscripts"
+default-run = "slasher"
 authors = ["T.Sawyer <saylesss87@proton.me"]
 repository = "https://github.com/saylesss88/slasher-horrorscripts"
 description = "A Rust-based CLI tool that displays high-quality ANSI art of horror movie icons in your terminal"
@@ -21,10 +21,6 @@ exclude = [
 ]
 
 [[bin]]
-name = "slasher-horrorscripts"
-path = "src/main.rs"
-
-[[bin]]
 name = "slasher"
 path = "src/main.rs"
 
@@ -35,8 +31,8 @@ rand = "0.10.1"
 rust-embed = "8.11.0"
 anyhow = "1.0"
 image = {version = "0.25.1", default-features = false, features = [
-	"png",
 	"jpeg",
+	"png",
 ]}
 sysinfo = "0.39.1"
 colored = "3.1.1"
