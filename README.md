@@ -83,8 +83,7 @@ cp target/release/slasher-horrorscripts ~/.local/bin/
 
 ## Usage
 
-Run the tool directly from your terminal, both `slasher-horrorscripts` &
-`slasher` work:
+Run the tool directly from your terminal:
 
 ```bash
 # Show a random slasher (default ANSI style)
@@ -135,10 +134,10 @@ your shell config (`.bashrc`, `.zshrc`, or `config.fish`):
 
 ```bash
 # Display a random slasher on startup
-slasher-horrorscripts
+slasher
 # Random slasher w/ fetch
-slasher-horrorscripts --fetch
-slasher-horrorscripts --fetch --style sixel
+slasher --fetch
+slasher --fetch --style sixel
 ```
 
 ---
