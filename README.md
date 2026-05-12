@@ -14,7 +14,7 @@ macabre.
   <img src="https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/output-slasher3.gif" width="600" alt="slasher-horrorscripts demo">
 </p>
 
-![screenshot1](https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/saw.cleaned.png)
+![screenshot1](https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/saw.png)
 
 ![screenshot1](https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/demo2.png)
 
