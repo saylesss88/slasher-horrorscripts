@@ -602,6 +602,8 @@ dependencies = [
 [[package]]
 name = "px2ansi"
 version = "0.3.12"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4115329991541881b91bc965eef28292402b8216614fda183b632ab136855329"
 dependencies = [
  "fontdue",
  "icy_sixel",
@@ -875,7 +877,7 @@ checksum = "703d5c7ef118737c72f1af64ad2f6f8c5e1921f818cdcb97b8fe6fc69bf66214"
 
 [[package]]
 name = "slasher-horrorscripts"
-version = "0.3.0"
+version = "0.3.1"
 dependencies = [
  "ansi-width",
  "anyhow",
