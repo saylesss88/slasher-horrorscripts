@@ -11,7 +11,7 @@ in your terminal. Inspired by `pokemon-colorscripts`, but built for fans of the
 macabre.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/output-slasher.gif" width="600" alt="slasher-horrorscripts demo">
+  <img src="https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/output-slasher2.gif" width="600" alt="slasher-horrorscripts demo">
 </p>
 
 ![screenshot1](https://raw.githubusercontent.com/saylesss88/slasher-horrorscripts/main/assets/saw.cleaned.png)
