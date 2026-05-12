@@ -1,10 +1,12 @@
 #![allow(clippy::multiple_crate_versions)]
+use crate::cli::{parse_preset, Cli};
 use anyhow::Result;
 use clap::Parser;
-use px2ansi::{RenderOptions, RenderStylePreset};
+use px2ansi::RenderOptions;
 use rand::prelude::IndexedRandom;
 use rust_embed::RustEmbed;
 
+pub mod cli;
 /// System information and fetch logic.
 pub mod fetch;
 
@@ -12,42 +14,6 @@ pub mod fetch;
 #[derive(RustEmbed)]
 #[folder = "assets/embed/images/"]
 struct Assets;
-
-/// Command-line arguments for the Slasher CLI.
-#[derive(Parser)]
-#[command(name = "slasher")]
-#[command(about = "Horror-themed script manager", long_about = None)]
-struct Cli {
-    /// Character name (e.g. "jason", "freddy"). If omitted, a random slasher is chosen.
-    #[arg(short, long)]
-    name: Option<String>,
-    /// List all available slashers
-    #[arg(short, long)]
-    list: bool,
-    /// Show system info only, no image
-    #[arg(long)]
-    fetch_only: bool,
-    /// Show system info alongside the image
-    #[arg(long)]
-    fetch: bool,
-    /// Render style: ansi, braille, ascii, unicode, fade, fullblock, sixel
-    #[arg(long, default_value = "ansi")]
-    style: String,
-}
-
-/// Maps a string input to a corresponding `RenderStylePreset`.
-/// Defaults to `Ansi` if the input is unrecognized.
-fn parse_preset(s: &str) -> RenderStylePreset {
-    match s.to_lowercase().as_str() {
-        "braille" => RenderStylePreset::Braille,
-        "ascii" => RenderStylePreset::Ascii,
-        "unicode" => RenderStylePreset::Unicode,
-        "fade" => RenderStylePreset::Fade,
-        "fullblock" => RenderStylePreset::FullBlock,
-        "sixel" => RenderStylePreset::Sixel,
-        _ => RenderStylePreset::Ansi,
-    }
-}
 
 fn main() -> Result<()> {
     let cli = Cli::parse();

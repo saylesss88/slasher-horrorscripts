@@ -144,7 +144,7 @@ fn disk_usage() -> String {
     "N/A".to_string()
 }
 
-/// Returns the machine architecture (e.g., "x86_64").
+/// Returns the machine architecture (e.g., `x86_64`).
 fn arch() -> String {
     std::env::consts::ARCH.to_string()
 }
