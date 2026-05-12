@@ -13,13 +13,17 @@ use sysinfo::{
 // Constants
 // ---------------------------------------------------------------------------
 
+/// Minimum terminal columns required for the right-hand info text to display.
 const MIN_RIGHT_BUDGET: usize = 12;
+/// Horizontal space (in columns) between the image and the system info.
 const GAP: usize = 1;
 
 // ---------------------------------------------------------------------------
 // Terminal size
 // ---------------------------------------------------------------------------
 
+/// Returns the current terminal width in columns.
+/// Defaults to 80 if it cannot be determined via environment or ioctl.
 fn term_cols() -> usize {
     if let Some(n) = env::var("COLUMNS")
         .ok()
@@ -41,6 +45,7 @@ fn term_cols() -> usize {
     80
 }
 
+/// Calculates the approximate width of a single terminal character cell in pixels.
 fn term_cell_px_w() -> u32 {
     #[cfg(unix)]
     {
@@ -58,6 +63,7 @@ fn term_cell_px_w() -> u32 {
     10
 }
 
+/// Calculates the approximate height of a single terminal character cell in pixels.
 fn term_cell_px_h() -> u32 {
     #[cfg(unix)]
     {
@@ -79,10 +85,12 @@ fn term_cell_px_h() -> u32 {
 // Info helpers
 // ---------------------------------------------------------------------------
 
+/// Returns the current OS user, or "victim" as a horror-themed fallback.
 fn username() -> String {
     env::var("USER").unwrap_or_else(|_| "victim".to_string())
 }
 
+/// Returns the system locale from env variables.
 #[must_use]
 pub fn linux_locale() -> String {
     env::var("LC_ALL")
@@ -90,6 +98,7 @@ pub fn linux_locale() -> String {
         .unwrap_or_else(|_| "C".to_string())
 }
 
+/// Identifies the current shell name (e.g., "zsh", "bash").
 fn current_shell() -> String {
     env::var("SHELL").map_or_else(
         |_| "unknown".to_string(),
@@ -97,12 +106,14 @@ fn current_shell() -> String {
     )
 }
 
+/// Returns the brand name of the first CPU found.
 fn cpu_model(sys: &System) -> String {
     sys.cpus()
         .first()
         .map_or_else(|| "Unknown CPU".to_string(), |c| c.brand().to_string())
 }
 
+/// Finds the first non-loopback IPv4 address.
 fn local_ip() -> String {
     let networks = Networks::new_with_refreshed_list();
     for (iface, data) in &networks {
@@ -119,6 +130,7 @@ fn local_ip() -> String {
     "N/A".to_string()
 }
 
+/// Calculates used vs total space for the root (/) partition.
 fn disk_usage() -> String {
     let disks = Disks::new_with_refreshed_list();
     for disk in &disks {
@@ -132,10 +144,12 @@ fn disk_usage() -> String {
     "N/A".to_string()
 }
 
+/// Returns the machine architecture (e.g., "x86_64").
 fn arch() -> String {
     std::env::consts::ARCH.to_string()
 }
 
+/// Formats system uptime into a human-readable "Dd Hh Mm" format.
 fn uptime_string(uptime: u64) -> String {
     let days = uptime / 86400;
     let hours = (uptime % 86400) / 3600;
@@ -147,6 +161,7 @@ fn uptime_string(uptime: u64) -> String {
     }
 }
 
+/// Aggregates all system information into a vector of formatted, colored strings.
 #[must_use]
 pub fn fetch_lines() -> Vec<String> {
     let refresh = RefreshKind::nothing()
@@ -207,6 +222,8 @@ pub fn fetch_lines() -> Vec<String> {
 // ANSI-safe truncation
 // ---------------------------------------------------------------------------
 
+/// Truncates a string to a specific column width without breaking ANSI escape codes.
+/// This prevents "bleeding" colors and ensuring the layout remains intact.
 fn truncate_ansi(s: &str, max_cols: usize) -> String {
     if max_cols == 0 {
         return String::new();
@@ -250,6 +267,7 @@ fn truncate_ansi(s: &str, max_cols: usize) -> String {
 // Print functions
 // ---------------------------------------------------------------------------
 
+/// Prints a simple ASCII horror logo alongside system information.
 pub fn print_fetch() {
     let logo = [
         "   _______  ",
@@ -270,8 +288,11 @@ pub fn print_fetch() {
     println!();
 }
 
+/// Prints two blocks of text side-by-side.
+/// If the terminal is too narrow, it stacks them vertically instead.
+///
 /// # Errors
-/// IO write failure.
+/// Returns an error if writing to the provided `writer` fails.
 pub fn print_with_left_block_writer(
     image_block: &str,
     left_width: usize,
@@ -306,14 +327,18 @@ pub fn print_with_left_block_writer(
     Ok(())
 }
 
+/// Renders a dynamic image and system info side-by-side.
+/// Handles specific scaling logic for Sixel (high-res) vs. Text-based charsets.
+///
 /// # Errors
-/// Render or IO failure.
+/// Returns an error if image rendering or writing fails.
 pub fn print_fetch_with_image(
     img: &DynamicImage,
     render: &RenderOptions,
     writer: &mut dyn Write,
 ) -> Result<()> {
     let cols = term_cols();
+    // Ensure the image doesn't take up the whole screen, leaving room for text
     let max_img_cols = u32::try_from(cols.saturating_sub(38).max(20)).unwrap_or(20);
     let (orig_w, orig_h) = (img.width(), img.height());
 
