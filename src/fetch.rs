@@ -16,7 +16,7 @@ use sysinfo::{
 /// Minimum terminal columns required for the right-hand info text to display.
 const MIN_RIGHT_BUDGET: usize = 12;
 /// Horizontal space (in columns) between the image and the system info.
-const GAP: usize = 1;
+const GAP: usize = 2;
 
 // ---------------------------------------------------------------------------
 // Terminal size

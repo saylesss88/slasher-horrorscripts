@@ -29,7 +29,8 @@ name = "slasher"
 path = "src/main.rs"
 
 [dependencies]
-px2ansi = {version = "0.3.11", features = ["full"]}
+px2ansi = {path = "../px2ansi-rs/lib", features = ["full"]}
+# px2ansi = {version = "0.3.12", features = ["full"]}
 clap = {version = "4.4", default-features = false, features = ["derive", "std"]}
 rand = "0.10.1"
 rust-embed = "8.11.0"

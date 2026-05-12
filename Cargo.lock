@@ -601,9 +601,7 @@ dependencies = [
 
 [[package]]
 name = "px2ansi"
-version = "0.3.11"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fd993c5e601b5feb1e062d51b4b8e74cdf2b2f47402b23e05fcb929bc603e9fa"
+version = "0.3.12"
 dependencies = [
  "fontdue",
  "icy_sixel",

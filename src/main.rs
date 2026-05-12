@@ -2,7 +2,7 @@
 use crate::cli::{parse_preset, Cli};
 use anyhow::Result;
 use clap::Parser;
-use px2ansi::RenderOptions;
+use px2ansi::{get_terminal_size, RenderOptions};
 use rand::prelude::IndexedRandom;
 use rust_embed::RustEmbed;
 
@@ -92,8 +92,19 @@ fn main() -> Result<()> {
     if cli.fetch {
         fetch::print_fetch_with_image(&img, &opts, &mut stdout)?;
     } else {
-        opts.render_centered(&img, &mut stdout)?;
-    }
+        let (term_w, _) = get_terminal_size();
 
+        let pct =
+            if cli.style.eq_ignore_ascii_case("sixel") || cli.style.eq_ignore_ascii_case("ascii") {
+                6
+            } else {
+                4
+            };
+        let prepared = opts
+            .with_width((term_w * pct / 10).max(1))
+            .prepare_image(&img);
+        opts.with_width((term_w * pct / 10).max(1))
+            .render(&prepared, &mut stdout)?;
+    }
     Ok(())
 }
