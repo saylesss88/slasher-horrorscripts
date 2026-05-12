@@ -1,0 +1,202 @@
+[
+  {
+    "name": "ahs1",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/ahs1.png",
+    "dimensions": [
+      2233,
+      2500
+    ]
+  },
+  {
+    "name": "ahs2",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/ahs2.png",
+    "dimensions": [
+      500,
+      500
+    ]
+  },
+  {
+    "name": "ahs3",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/ahs3.png",
+    "dimensions": [
+      436,
+      639
+    ]
+  },
+  {
+    "name": "chucky",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/chucky.png",
+    "dimensions": [
+      663,
+      747
+    ]
+  },
+  {
+    "name": "chucky2",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/chucky2.png",
+    "dimensions": [
+      371,
+      568
+    ]
+  },
+  {
+    "name": "clown",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/clown.png",
+    "dimensions": [
+      600,
+      600
+    ]
+  },
+  {
+    "name": "clown-mask",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/clown-mask.png",
+    "dimensions": [
+      436,
+      639
+    ]
+  },
+  {
+    "name": "freddy",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/freddy.png",
+    "dimensions": [
+      781,
+      960
+    ]
+  },
+  {
+    "name": "it",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/it.png",
+    "dimensions": [
+      962,
+      1285
+    ]
+  },
+  {
+    "name": "it2",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/it2.png",
+    "dimensions": [
+      500,
+      500
+    ]
+  },
+  {
+    "name": "jason",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/jason.png",
+    "dimensions": [
+      512,
+      512
+    ]
+  },
+  {
+    "name": "jason-new",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/jason-new.png",
+    "dimensions": [
+      618,
+      797
+    ]
+  },
+  {
+    "name": "jigsaw",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/jigsaw.png",
+    "dimensions": [
+      700,
+      700
+    ]
+  },
+  {
+    "name": "leatherface",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/leatherface.png",
+    "dimensions": [
+      1070,
+      1300
+    ]
+  },
+  {
+    "name": "mike-myers",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/mike-myers.png",
+    "dimensions": [
+      436,
+      639
+    ]
+  },
+  {
+    "name": "otis",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/otis.png",
+    "dimensions": [
+      436,
+      639
+    ]
+  },
+  {
+    "name": "pinhead",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/pinhead.png",
+    "dimensions": [
+      600,
+      600
+    ]
+  },
+  {
+    "name": "psycho-head",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/psycho-head.png",
+    "dimensions": [
+      436,
+      639
+    ]
+  },
+  {
+    "name": "pyramid-head",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/pyramid-head.png",
+    "dimensions": [
+      560,
+      775
+    ]
+  },
+  {
+    "name": "sam",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/sam.png",
+    "dimensions": [
+      2550,
+      3300
+    ]
+  },
+  {
+    "name": "scarryrabbit",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/scarryrabbit.png",
+    "dimensions": [
+      1438,
+      2048
+    ]
+  },
+  {
+    "name": "scissorman",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/scissorman.png",
+    "dimensions": [
+      516,
+      791
+    ]
+  },
+  {
+    "name": "scream",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/scream.png",
+    "dimensions": [
+      700,
+      909
+    ]
+  },
+  {
+    "name": "springtrap",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/springtrap.png",
+    "dimensions": [
+      616,
+      1297
+    ]
+  },
+  {
+    "name": "xenomorph",
+    "path": "/home/jr/projects/slasher-horrorscripts/assets/images/xenomorph.png",
+    "dimensions": [
+      760,
+      965
+    ]
+  }
+]

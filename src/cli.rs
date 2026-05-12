@@ -1,5 +1,6 @@
 use clap::Parser;
 use px2ansi::RenderStylePreset;
+use std::path::PathBuf;
 /// Command-line arguments for the Slasher CLI.
 #[derive(Parser)]
 #[command(name = "slasher")]
@@ -20,6 +21,12 @@ pub struct Cli {
     /// Render style: ansi, braille, ascii, unicode, fade, fullblock, sixel
     #[arg(long, default_value = "ansi")]
     pub style: String,
+    /// Build a JSON index of images in a directory
+    #[arg(long)]
+    pub index: Option<PathBuf>,
+    /// Output path for the index (defaults to <dir>/index.json)
+    #[arg(long)]
+    pub index_out: Option<PathBuf>,
 }
 
 /// Maps a string input to a corresponding `RenderStylePreset`.

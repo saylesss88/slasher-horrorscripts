@@ -45,6 +45,13 @@ fn main() -> Result<()> {
         return Ok(());
     }
 
+    if let Some(dir) = cli.index {
+        let out = cli.index_out.unwrap_or_else(|| dir.join("index.json"));
+        px2ansi::indexer::build_index(&dir, &out)?;
+        println!("Index written to {}", out.display());
+        return Ok(());
+    }
+
     // Determine which image to render: specific name or random selection
     let target = cli.name.map_or_else(
         || {

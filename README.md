@@ -160,6 +160,47 @@ That's it, the image is embedded at compile time and available immediately.
 
 ---
 
+## Use the Indexer
+
+This is more about showcasing the `px2ansi` library than anything particularly
+useful for `slasher-horrorscripts` since it uses embeded images. It would be
+fairly easy to add a `--show` flag that referenced the index rather than the
+embeded images.
+
+```bash
+slasher --index ./assets/sprites
+slasher --index ./assets/sprites --index-out ./sprites.json
+```
+
+This creates a JSON index in the following format:
+
+```json
+[
+  {
+    "name": "nixos",
+    "path": "/home/jr/projects/px2ansi-rs/tests/nixos.png",
+    "dimensions": [
+      1183,
+      1024
+    ]
+  },
+  {
+    "name": "poke1",
+    "path": "/home/jr/projects/px2ansi-rs/tests/poke1.png",
+    "dimensions": [
+      1254,
+      1254
+    ]
+  },
+```
+
+For a fully functioning indexer, see
+[px2ansi-rs](https://crates.io/crates/px2ansi-rs) the CLI frontend to the
+`px2ansi` library. With `px2ansi-rs`, you can create a 1,600 sprite index in a
+few milliseconds and automatically show a random sprite from that index.
+
+---
+
 ## 🔧 Technical Details
 
 Rendering is powered by the [px2ansi](https://crates.io/crates/px2ansi) library.
