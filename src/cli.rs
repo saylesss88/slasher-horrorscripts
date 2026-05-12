@@ -3,8 +3,7 @@ use px2ansi::RenderStylePreset;
 use std::path::PathBuf;
 /// Command-line arguments for the Slasher CLI.
 #[derive(Parser)]
-#[command(name = "slasher")]
-#[command(about = "Horror-themed script manager", long_about = None)]
+#[command(name = "slasher", version, about = "Horror-themed script manager")]
 pub struct Cli {
     /// Character name (e.g. "jason", "freddy"). If omitted, a random slasher is chosen.
     #[arg(short, long)]
