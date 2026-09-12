@@ -25,19 +25,16 @@ name = "slasher"
 path = "src/main.rs"
 
 [dependencies]
-px2ansi = {version = "0.3.12", features = ["full"]}
-clap = {version = "4.4", default-features = false, features = ["derive", "std"]}
-rand = "0.10.1"
-rust-embed = "8.11.0"
+px2ansi = { version = "0.3.14", features = ["full"] }
+clap = { version = "4.6", default-features = false, features = ["derive", "std"] }
+rand = "0.10.2"
+rust-embed = "8.12.0"
 anyhow = "1.0"
-image = {version = "0.25.1", default-features = false, features = [
-	"jpeg",
-	"png",
-]}
-sysinfo = "0.39.1"
+image = { version = "0.25.10", default-features = false, features = ["jpeg", "png"] }
+sysinfo = "0.39.6"
 colored = "3.1.1"
 ansi-width = "0.1.0"
-libc = "0.2.186"
+libc = "0.2.189"
 unicode-width = "0.2.2"
 
 [profile.release]
