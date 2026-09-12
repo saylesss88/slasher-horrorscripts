@@ -1,6 +1,6 @@
 [package]
 name = "slasher-horrorscripts"
-version = "0.4.0"
+version = "0.3.1"
 edition = "2024"
 default-run = "slasher"
 authors = ["T.Sawyer <saylesss87@proton.me"]
@@ -25,12 +25,15 @@ name = "slasher"
 path = "src/main.rs"
 
 [dependencies]
-px2ansi = { version = "0.3.14", features = ["full"] }
-clap = { version = "4.6", default-features = false, features = ["derive", "std"] }
+px2ansi = {version = "0.3.14", features = ["full"]}
+clap = {version = "4.6", default-features = false, features = ["derive", "std"]}
 rand = "0.10.2"
 rust-embed = "8.12.0"
 anyhow = "1.0"
-image = { version = "0.25.10", default-features = false, features = ["jpeg", "png"] }
+image = {version = "0.25.10", default-features = false, features = [
+	"jpeg",
+	"png",
+]}
 sysinfo = "0.39.6"
 colored = "3.1.1"
 ansi-width = "0.1.0"
