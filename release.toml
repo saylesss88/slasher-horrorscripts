@@ -1,0 +1,8 @@
+[publish]
+cargo = false
+
+[release]
+forge = "none"
+
+# [bump]
+# force = "minor"
