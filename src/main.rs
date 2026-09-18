@@ -1,8 +1,8 @@
 #![allow(clippy::multiple_crate_versions)]
-use crate::cli::{parse_preset, Cli};
+use crate::cli::{Cli, parse_preset};
 use anyhow::Result;
 use clap::Parser;
-use px2ansi::{get_terminal_size, RenderOptions};
+use px2ansi::{RenderOptions, get_terminal_size};
 use rand::prelude::IndexedRandom;
 use rust_embed::RustEmbed;
 
