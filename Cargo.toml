@@ -6,18 +6,16 @@ default-run = "slasher"
 authors = ["T.Sawyer <saylesss87@proton.me"]
 repository = "https://github.com/saylesss88/slasher-horrorscripts"
 description = "A Rust-based CLI tool that displays high-quality ANSI art of horror movie icons in your terminal"
-readme = "README.md"
 keywords = ["rust", "terminal"]
-homepage = "https://github.com/saylesss88/slasher-horrorscripts"
 categories = ["command-line-utilities"]
 license = 'MIT'
 exclude = [
-  "result",
-  "docs",
-  ".github",
-  ".gitignore",
-  "assets/texts/*.txt",
-  "assets/images/*.png",
+	"result",
+	"docs",
+	".github",
+	".gitignore",
+	"assets/texts/*.txt",
+	"assets/images/*.png",
 ]
 
 [[bin]]
@@ -25,18 +23,15 @@ name = "slasher"
 path = "src/main.rs"
 
 [dependencies]
-px2ansi = { version = "0.3.12", features = ["full"] }
-clap = { version = "4.4", default-features = false, features = [
-  "derive",
-  "std",
-] }
+px2ansi = {version = "0.4.0", features = ["full"]}
+clap = {version = "4.4", default-features = false, features = ["derive", "std"]}
 rand = "0.10.1"
 rust-embed = "8.11.0"
 anyhow = "1.0"
-image = { version = "0.25.1", default-features = false, features = [
-  "jpeg",
-  "png",
-] }
+image = {version = "0.25.1", default-features = false, features = [
+	"jpeg",
+	"png",
+]}
 sysinfo = "0.39.1"
 colored = "3.1.1"
 ansi-width = "0.1.0"
@@ -56,9 +51,9 @@ unsafe_code = "warn"
 deprecated = "warn"
 unused_lifetimes = "warn"
 elided_lifetimes_in_paths = "warn"
-future_incompatible = { level = "warn", priority = -1 }
-nonstandard_style = { level = "warn", priority = -1 }
-rust_2018_idioms = { level = "warn", priority = -1 }
+future_incompatible = {level = "warn", priority = -1}
+nonstandard_style = {level = "warn", priority = -1}
+rust_2018_idioms = {level = "warn", priority = -1}
 rust_2021_prelude_collisions = "warn"
 semicolon_in_expressions_from_macros = "warn"
 trivial_numeric_casts = "warn"
@@ -71,12 +66,12 @@ all = "warn"
 missing_crate_level_docs = "warn"
 
 [lints.clippy]
-all = { level = "warn", priority = -1 }
-correctness = { level = "warn", priority = -1 }
-suspicious = { level = "warn", priority = -1 }
-style = { level = "warn", priority = -1 }
-complexity = { level = "warn", priority = -1 }
-perf = { level = "warn", priority = -1 }
+all = {level = "warn", priority = -1}
+correctness = {level = "warn", priority = -1}
+suspicious = {level = "warn", priority = -1}
+style = {level = "warn", priority = -1}
+complexity = {level = "warn", priority = -1}
+perf = {level = "warn", priority = -1}
 todo = "warn"
 dbg_macro = "warn"
 unwrap_used = "warn"

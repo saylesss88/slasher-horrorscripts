@@ -1,4 +1,3 @@
-#![allow(clippy::multiple_crate_versions)]
 use crate::cli::{Cli, parse_preset};
 use anyhow::Result;
 use clap::Parser;
