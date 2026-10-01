@@ -142,7 +142,6 @@ slasher --fetch --style sixel
 
 ---
 
-
 ## 🎨 Adding New Characters
 
 Want to add Swamp Thing, or any other character?
@@ -151,6 +150,7 @@ Want to add Swamp Thing, or any other character?
    - Tip: 8-bit or 16-bit sprites with transparent backgrounds work best.
 2. Save the image to `assets/embed/images/` (e.g., `swamp-thing.png`).
 3. Rebuild the binary:
+
 ```bash
 cargo build --release
 ```
@@ -162,9 +162,9 @@ That's it, the image is embedded at compile time and available immediately.
 ## Use the Indexer
 
 This is more about showcasing the `px2ansi` library than anything particularly
-useful for `slasher-horrorscripts` since it uses embeded images. It would be
+useful for `slasher-horrorscripts` since it uses embedded images. It would be
 fairly easy to add a `--show` flag that referenced the index rather than the
-embeded images.
+embedded images.
 
 ```bash
 slasher --index ./assets/sprites
@@ -211,13 +211,11 @@ Rendering is powered by the [px2ansi](https://crates.io/crates/px2ansi) library.
   per-style dimension logic (e.g. Braille uses 2×4 dot patterns, Sixel renders
   pixel-accurate).
 - **Embedding**: The [rust-embed](https://crates.io/crates/rust-embed) crate
-  compiles the PNG sprites in `assets/embed/images/` directly into the binary
-  at build time, producing a single portable executable with no runtime
+  compiles the PNG sprites in `assets/embed/images/` directly into the binary at
+  build time, producing a single portable executable with no runtime
   dependencies.
 
-  ---
-
-Test
+---
 
 ## 📜 License
 

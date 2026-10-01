@@ -1,26 +1,18 @@
+use std::{env, io::Write};
+
 use ansi_width::ansi_width;
 use anyhow::Result;
 use colored::Colorize;
 use image::{DynamicImage, imageops::FilterType};
 use px2ansi::{CharsetMode, RenderOptions};
-use std::{env, io::Write};
-
 use sysinfo::{
     CpuRefreshKind, Disks, MemoryRefreshKind, Networks, ProcessRefreshKind, RefreshKind, System,
 };
-
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
 
 /// Minimum terminal columns required for the right-hand info text to display.
 const MIN_RIGHT_BUDGET: usize = 12;
 /// Horizontal space (in columns) between the image and the system info.
 const GAP: usize = 4;
-
-// ---------------------------------------------------------------------------
-// Terminal size
-// ---------------------------------------------------------------------------
 
 /// Returns the current terminal width in columns.
 /// Defaults to 80 if it cannot be determined via environment or ioctl.
@@ -80,10 +72,6 @@ fn term_cell_px_h() -> u32 {
     }
     20
 }
-
-// ---------------------------------------------------------------------------
-// Info helpers
-// ---------------------------------------------------------------------------
 
 /// Returns the current OS user, or "victim" as a horror-themed fallback.
 fn username() -> String {

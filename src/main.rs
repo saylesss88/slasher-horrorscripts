@@ -1,9 +1,13 @@
-use crate::cli::{Cli, parse_preset};
+use std::{io, io::Cursor, path::Path};
+
 use anyhow::Result;
 use clap::Parser;
-use px2ansi::{RenderOptions, get_terminal_size};
+use image::ImageFormat;
 use rand::prelude::IndexedRandom;
 use rust_embed::RustEmbed;
+
+use crate::cli::Cli;
+use px2ansi::{RenderOptions, get_terminal_size};
 
 pub mod cli;
 /// System information and fetch logic.
@@ -29,7 +33,7 @@ fn main() -> Result<()> {
     if cli.list {
         println!("Available Slashers:");
         for file in &files {
-            let name = std::path::Path::new(file)
+            let name = Path::new(file)
                 .file_stem()
                 .map_or_else(|| file.clone(), |s| s.to_string_lossy().to_string());
 
@@ -55,7 +59,10 @@ fn main() -> Result<()> {
     let target = cli.name.map_or_else(
         || {
             let mut rng = rand::rng();
-            files.choose(&mut rng).unwrap().clone()
+            files
+                .choose(&mut rng)
+                .cloned()
+                .unwrap_or_else(|| String::from("default.png"))
         },
         |n| {
             // Match against actual filenames with any extension
@@ -63,7 +70,7 @@ fn main() -> Result<()> {
             files
                 .iter()
                 .find(|f| {
-                    std::path::Path::new(f)
+                    Path::new(f)
                         .file_stem()
                         .is_some_and(|s| s.to_string_lossy().to_lowercase() == lower)
                 })
@@ -79,13 +86,13 @@ fn main() -> Result<()> {
         return Ok(());
     };
 
-    let fmt = image::ImageFormat::from_path(&target).unwrap_or(image::ImageFormat::Png);
-    let img = image::load(std::io::Cursor::new(file.data.as_ref()), fmt)?;
+    let fmt = ImageFormat::from_path(&target).unwrap_or(ImageFormat::Png);
+    let img = image::load(Cursor::new(file.data.as_ref()), fmt)?;
 
     // Configure and execute the terminal render
-    let preset = parse_preset(&cli.style);
+    let preset = cli::parse_preset(&cli.style);
     let opts = RenderOptions::builder().preset(preset).build();
-    let mut stdout = std::io::stdout();
+    let mut stdout = io::stdout();
 
     // Handle the --fetch flag
     if cli.fetch {

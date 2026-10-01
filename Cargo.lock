@@ -839,6 +839,7 @@ dependencies = [
  "px2ansi",
  "rand",
  "rust-embed",
+ "rustix",
  "sysinfo",
  "unicode-width 0.2.2",
 ]
